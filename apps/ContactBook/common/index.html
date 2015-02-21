@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PhoneBook</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!--
+    			<link rel="shortcut icon" href="images/favicon.png">
+    			<link rel="apple-touch-icon" href="images/apple-touch-icon.png"> 
+    		-->
+<link rel="stylesheet" href="css/main.css">
+<script>
+	window.$ = window.jQuery = WLJQ;
+</script>
+<script type="text/javascript" src="dojox/mobile/deviceTheme.js"></script>
+<script type="text/javascript"
+	data-dojo-config="isDebug: false, async: true, parseOnLoad: true, mblHideAddressBar: false"
+	src="dojo/dojo.js"></script>
+</head>
+<body style="display: none;">
+
+	<div data-dojo-type="dojox.mobile.ScrollableView" id="selectionList"
+		data-dojo-props="selected:false,scrollDir:'v'">
+		<div data-dojo-type="dojox.mobile.Heading"
+			data-dojo-props="label:'Selection', fixed:'top'"></div>
+		<div data-dojo-type="dojox.mobile.EdgeToEdgeList">
+			<div data-dojo-type="dojox.mobile.ListItem"
+				data-dojo-props="label:'Browse Contact', moveTo:'enterDetails'"></div>
+			<div data-dojo-type="dojox.mobile.ListItem"
+				data-dojo-props="label:'Add Contact', moveTo:'enterAddDetails'"></div>
+			<div data-dojo-type="dojox.mobile.ListItem"
+				data-dojo-props="label:'Delete Contact', moveTo:'enterDelDetails'"></div>
+			<div data-dojo-type="dojox.mobile.ListItem"
+				data-dojo-props="label:'Browse first 50 Contacts', moveTo:'browseDetails'"></div>
+		</div>
+	</div>
+	<div data-dojo-type="dojox.mobile.ScrollableView" id="enterAddDetails"
+		data-dojo-props="selected:false,scrollDir:'v'">
+		<div data-dojo-type="dojox.mobile.Heading"
+			data-dojo-props="label:'Enter Details',back:'Back',moveTo:'selectionList',fixed:'top'"></div>
+			<br>
+		<label for="afn" style="font-weight: bold">  First Name:</label> <input data-dojo-type="dojox.mobile.TextBox" id="afn"><br>
+		<label for="aln" style="font-weight: bold">  Last Name:</label> <input data-dojo-type="dojox.mobile.TextBox" id="aln"><br>
+		<label for="aext" style="font-weight: bold">  Extension:</label> <input data-dojo-type="dojox.mobile.TextBox" id="aext"><br>
+		<label for="ezip" style="font-weight: bold">  Zip Code:</label> <input data-dojo-type="dojox.mobile.TextBox" id="azip"><br>
+		<button data-dojo-type="dojox.mobile.ToggleButton" data-dojo-props="moveTo:'selectionList'" onclick="addToPhoneBook">SUBMIT</button>
+	</div>
+	<div data-dojo-type="dojox.mobile.ScrollableView" id="enterDetails"
+		data-dojo-props="selected:false,scrollDir:'v'">
+		<div data-dojo-type="dojox.mobile.Heading"
+			data-dojo-props="label:'Enter Details',back:'Back',moveTo:'selectionList',fixed:'top'"></div>
+			<br>
+		<label for="eln" style="font-weight: bold">  Last Name:</label> <input data-dojo-type="dojox.mobile.TextBox" id="eln"><br>
+		<button data-dojo-type="dojox.mobile.ToggleButton" data-dojo-props="moveTo:'contactDetails'" onclick="inquirePhoneBook(eln.value)">SUBMIT</button>
+	</div>
+	<div data-dojo-type="dojox.mobile.ScrollableView" id="contactDetails"
+		data-dojo-props="selected:false,scrollDir:'v'">
+		<div data-dojo-type="dojox.mobile.Heading"
+			data-dojo-props="label:'Contact Details',back:'Back',moveTo:'enterDetails',fixed:'top'"></div>
+		<br>
+		<label for="fn" style="font-weight: bold">  First Name:</label> <input data-dojo-type="dojox.mobile.TextBox" id="fn"><br>
+		<label for="ln" style="font-weight: bold">  Last Name :</label> <input data-dojo-type="dojox.mobile.TextBox" id="ln"><br>
+		<label for="ext" style="font-weight: bold"> Extension :</label> <input data-dojo-type="dojox.mobile.TextBox" id="ext"><br>
+		<label for="zip" style="font-weight: bold"> Zip Code  :</label> <input data-dojo-type="dojox.mobile.TextBox" id="zip"><br>		
+	</div>
+	<div data-dojo-type="dojox.mobile.ScrollableView" id="enterDelDetails"
+		data-dojo-props="selected:false,scrollDir:'v'">
+		<div data-dojo-type="dojox.mobile.Heading"
+			data-dojo-props="label:'Enter Details',back:'Back',moveTo:'selectionList',fixed:'top'"></div>
+			<br>
+		<label for="dln" style="font-weight: bold">  Last Name:</label> <input data-dojo-type="dojox.mobile.TextBox" id="dln"><br>
+		<button data-dojo-type="dojox.mobile.ToggleButton" data-dojo-props="moveTo:'selectionList'" onclick="deletePhoneBook(dln.value)">SUBMIT</button>
+	</div>
+	<div data-dojo-type="dojox.mobile.ScrollableView" id="browseDetails"
+		data-dojo-props="selected:false,scrollDir:'v'">
+		<div data-dojo-type="dojox.mobile.Heading"
+			data-dojo-props="label:'Enter Details',back:'Back',moveTo:'selectionList',fixed:'top'"></div>
+			<br>
+		<label for="dln" style="font-weight: bold">  Last Name:</label> <input data-dojo-type="dojox.mobile.TextBox" id="dln"><br>
+	</div>
+	<script src="js/initOptions.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/messages.js"></script>
+</body>
+</html>
